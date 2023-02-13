@@ -21,6 +21,8 @@ public class Dipendente {
 	
 	private String aggroba;
 	
+	private String vedisefunje;
+	
 	public String getId() {
 		return id;
 	}
