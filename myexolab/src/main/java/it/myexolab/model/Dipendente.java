@@ -23,7 +23,7 @@ public class Dipendente {
 	
 	private String vedisefunje;
 	
-	private String boooooooo;
+	private String buiiiiiiiiiii;
 	
 	public String getId() {
 		return id;
