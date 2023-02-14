@@ -5,12 +5,10 @@ import org.springframework.stereotype.Service;
 
 import it.myexolab.repository.RuoloRepository;
 
-@Service 
+@Service
 public class RuoloService {
 	
 	@Autowired
 	private RuoloRepository ruoloRepository;
-	
-	
 
 }
