@@ -1,5 +1,7 @@
 package it.myexolab.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +16,10 @@ public class ProgettoService {
 	
 	public Progetto create(Progetto progetto) {
 		return progettoRepository.save(progetto);
+	}
+	
+	public List<Progetto> findAll(){
+		return progettoRepository.findAll();
 	}
 
 }

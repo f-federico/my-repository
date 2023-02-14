@@ -8,4 +8,5 @@ import it.myexolab.model.Progetto;
 @Repository
 public interface ProgettoRepository extends MongoRepository<Progetto, String> {
 
+	
 }
