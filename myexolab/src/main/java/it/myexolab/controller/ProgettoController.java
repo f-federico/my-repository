@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import io.swagger.annotations.Api;
@@ -35,5 +36,15 @@ public class ProgettoController {
 	public List<Progetto> findAll(){
 		return progettoService.findAll();
 	}
+	
+	@GetMapping("findDipendentiByCliente")
+	public List<Progetto>findDipendentiByCliente(@RequestParam String cliente, @RequestParam String nome){
+		return progettoService.findDipendentiByCliente(cliente, nome);
+	}
 
+	@PostMapping("/update")
+		public Progetto update (Progetto progetto) {
+			return progettoService.update(progetto);
+		
+	}
 }

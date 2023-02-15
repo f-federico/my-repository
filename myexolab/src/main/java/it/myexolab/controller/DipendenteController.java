@@ -1,8 +1,11 @@
 package it.myexolab.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,17 +21,27 @@ import it.myexolab.service.DipendenteService;
 
 @RestController
 @RequestMapping("/dipendente")
-@CrossOrigin
+@CrossOrigin("*")
 public class DipendenteController {
 	
 	@Autowired
 	private DipendenteService dipendenteService;
 	
+	List<Dipendente> listaDip=new ArrayList<Dipendente>();
+	Dipendente dip= new Dipendente();
+	
 	
 //	insertMany
 	@PostMapping("/create")
-	public List<Dipendente> create (@RequestBody List<Dipendente> listaDipendenti){
-		return dipendenteService.create(listaDipendenti);
+	public ResponseEntity<List<Dipendente>> create (@RequestBody List<Dipendente> listaDipendenti){
+		try {
+			listaDip=dipendenteService.create(listaDipendenti);
+			return ResponseEntity.ok(listaDip);
+		}catch(Exception e) {
+			e.printStackTrace();
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+		}
+		
 	}
 	@PostMapping("/update")
 	public Dipendente update(@RequestBody Dipendente dipendente) {

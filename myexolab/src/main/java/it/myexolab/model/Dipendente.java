@@ -6,15 +6,15 @@ import org.springframework.data.mongodb.core.mapping.Field;
 
 import lombok.Data;
 
-//@Document(collection = "dipendente")
+@Document(collection = "dipendente")
 public class Dipendente {
 	@Id
 	private String id;
-//	@Field(name = "nome")
+	@Field(name = "nome")
 	private String nome;
-//	@Field(name = "cognome")
+	@Field(name = "cognome")
 	private String cognome;
-//	@Field(name = "eta")
+	@Field(name = "eta")
 	private int eta;
 
 	public String getId() {
@@ -47,6 +47,11 @@ public class Dipendente {
 
 	public void setEta(int eta) {
 		this.eta = eta;
+	}
+
+	@Override
+	public String toString() {
+		return "Dipendente [id=" + id + ", nome=" + nome + ", cognome=" + cognome + ", eta=" + eta + "]";
 	}
 
 }

@@ -3,6 +3,7 @@ package it.myexolab.model;
 import java.util.List;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
@@ -50,6 +51,12 @@ public class Progetto {
 
 	public void setListaDipendenti(List<Dipendente> listaDipendenti) {
 		this.listaDipendenti = listaDipendenti;
+	}
+
+	@Override
+	public String toString() {
+		return "Progetto [id=" + id + ", tecnologia=" + tecnologia + ", cliente=" + cliente + ", listaDipendenti="
+				+ listaDipendenti + "]";
 	}
 	
 	

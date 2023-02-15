@@ -19,7 +19,17 @@ public class ProgettoService {
 	}
 	
 	public List<Progetto> findAll(){
+		List<Progetto> listaProg=progettoRepository.findAll();
+		System.out.println(listaProg);
 		return progettoRepository.findAll();
+	}
+	
+	public List<Progetto> findDipendentiByCliente(String cliente, String nome){
+		return progettoRepository.findDipendentiByCliente(cliente, nome);
+	}
+	
+	public Progetto update (Progetto progetto) {
+		return progettoRepository.save(progetto);
 	}
 
 }
