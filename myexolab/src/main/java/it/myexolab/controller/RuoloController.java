@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.swagger.annotations.Api;
 import it.myexolab.model.Ruolo;
 import it.myexolab.service.RuoloService;
 
@@ -14,6 +15,7 @@ import it.myexolab.service.RuoloService;
 @RestController
 @RequestMapping("/ruolo")
 @CrossOrigin
+@Api("Gestisci i progetti")
 public class RuoloController {
 	
 	 @Autowired
