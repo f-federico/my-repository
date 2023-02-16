@@ -30,4 +30,8 @@ public class RuoloService {
 	public Ruolo update (Ruolo ruolo) {
 		return ruoloRepository.save(ruolo);
 	}
+	
+	public void deleteById(String id) {
+		ruoloRepository.deleteById(id);
+	}
 }

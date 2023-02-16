@@ -90,4 +90,8 @@ public class DipendenteService {
         AggregationResults output= mongoTemplate.aggregate(aggregation,"dipendente", AgeCount.class);
         return output.getMappedResults();
     }
+    
+    public void deleteById(String id) {
+    	dipendenteRepository.deleteById(id);
+    }
 }

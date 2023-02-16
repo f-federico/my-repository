@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -11,8 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+//import io.swagger.annotations.Api;
+//import io.swagger.annotations.ApiOperation;
 import it.myexolab.model.Ruolo;
 import it.myexolab.service.RuoloService;
 
@@ -20,13 +21,13 @@ import it.myexolab.service.RuoloService;
 @RestController
 @RequestMapping("/ruolo")
 @CrossOrigin
-@Api("Gestisci i progetti")
+//@Api("Gestisci i progetti")
 public class RuoloController {
 	
 	 @Autowired
 	 private RuoloService ruoloService;
 	 
-	 @ApiOperation("Specializzazioni presenti in azienda")
+//	 @ApiOperation("Specializzazioni presenti in azienda")
 	 @GetMapping("/findAll")
 	 public List<Ruolo> findAll(){
 		 return ruoloService.findAll();
@@ -47,4 +48,9 @@ public class RuoloController {
 		 return ruoloService.update(ruolo);
 	 }
 
+	 @DeleteMapping("/delete")
+	 public String deleteById(String id) {
+		 ruoloService.deleteById(id);
+		 return "Eliminazione avvenuta con successo";
+	 }
 }

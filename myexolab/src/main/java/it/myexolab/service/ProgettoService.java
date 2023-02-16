@@ -32,4 +32,7 @@ public class ProgettoService {
 		return progettoRepository.save(progetto);
 	}
 
+	public void deleteById(String id) {
+		progettoRepository.deleteById(id);
+	}
 }
