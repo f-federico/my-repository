@@ -1,8 +1,12 @@
 package it.myexolab.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.aggregation.Aggregation;
@@ -12,8 +16,10 @@ import org.springframework.data.mongodb.core.aggregation.MatchOperation;
 import org.springframework.data.mongodb.core.aggregation.SortOperation;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.data.support.PageableExecutionUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import it.myexolab.model.AgeCount;
 import it.myexolab.model.Dipendente;
@@ -93,5 +99,34 @@ public class DipendenteService {
     
     public void deleteById(String id) {
     	dipendenteRepository.deleteById(id);
+    }
+    
+    public Page<Dipendente> findDipendente(
+    		 String nome,
+    		 Integer min,
+    		 Integer max,
+    		 String cognome,
+    		 Integer page,
+    		 Integer dimensione
+    		){
+    	Pageable  pageable= PageRequest.of(page,dimensione);
+    	Query query= new Query().with(pageable);
+    	List<Criteria> criteria=new ArrayList<Criteria>();
+    	if(nome!=null && !(nome.isEmpty())) {
+//    		"i" è l'ption che consente l'ignorecase
+    		criteria.add(Criteria.where("nome").regex(nome,"i"));
+    	}
+    	if(min!=null && max!= null) {
+         criteria.add(Criteria.where("eta").gte(min).lte(max));
+    	}
+    	if(cognome!=null && !(cognome.isEmpty())) {
+    		criteria.add(Criteria.where("cognome").is(cognome));
+    	}
+    	if(!(criteria.isEmpty())) {
+    		query.addCriteria(new Criteria().andOperator(criteria.toArray(new Criteria[0])));
+    	}
+    	
+    	Page<Dipendente> dipendenti = PageableExecutionUtils.getPage(mongoTemplate.find(query, Dipendente.class), pageable,(() -> mongoTemplate.count(query.skip(0).limit(0), Dipendente.class)));
+    	return dipendenti;
     }
 }

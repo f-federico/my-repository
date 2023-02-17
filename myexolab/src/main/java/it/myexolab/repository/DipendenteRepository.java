@@ -11,6 +11,8 @@ import it.myexolab.model.Dipendente;
 @Repository
 public interface DipendenteRepository extends MongoRepository<Dipendente,String>{
 
+	
+	
 	@Query("{'nome':?0}")
 	List<Dipendente> findByNome(String nome);
 	

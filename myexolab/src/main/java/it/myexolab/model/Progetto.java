@@ -7,6 +7,17 @@ import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
+//@Getter
+//@Setter
+//@ToString
+//@Builder
 @Document(collection="progetto")
 public class Progetto {
     
@@ -18,7 +29,8 @@ public class Progetto {
 	
 	@Field (name="cliente")
 	private String cliente;
-	
+	@DBRef (lazy=true)
+//	 @JsonBackReference
 	private List<Dipendente> listaDipendenti;
 
 	public String getId() {
