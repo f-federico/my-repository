@@ -3,6 +3,7 @@ package it.myexolab.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.bson.Document;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
@@ -106,5 +107,9 @@ public class DipendenteController {
     		){
 		return dipendenteService.findDipendente(nome, min, max, cognome, page, dimensione);
 	}
+	
+	
+	
+	
 
 }

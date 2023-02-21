@@ -2,6 +2,7 @@ package it.myexolab.controller;
 
 import java.util.List;
 
+import org.bson.Document;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -54,4 +55,11 @@ public class ProgettoController {
 		progettoService.deleteById(id);
 		return "Eliminazione avvenuta con successo";
 	}
+	
+	@GetMapping("/laPiùAnziana")
+	public List<Document> laPiùAnziana(){
+	    return progettoService.findLaPiùAnziana();
+	}
+	
+	
 }

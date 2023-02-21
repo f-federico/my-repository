@@ -28,6 +28,9 @@ public interface DipendenteRepository extends MongoRepository<Dipendente,String>
 	@Query("{'eta':{'$gte':?0,'$lte':?1}}")
 	List<Dipendente> findDipendenteByEta(int min, int max);
 	
+	
+	
 //	List<Dipendente> findByRuoloOrderByNome();
+	
 	
 }
