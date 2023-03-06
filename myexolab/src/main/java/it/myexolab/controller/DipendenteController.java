@@ -36,10 +36,10 @@ public class DipendenteController {
 	
 //	insertMany
 	@PostMapping("/create")
-	public ResponseEntity<List<Dipendente>> create (@RequestBody List<Dipendente> listaDipendenti){
+	public ResponseEntity<Dipendente> create (@RequestBody Dipendente dipendente){
 		try {
-			listaDip=dipendenteService.create(listaDipendenti);
-			return ResponseEntity.ok(listaDip);
+			dip=dipendenteService.create(dipendente);
+			return ResponseEntity.ok(dip);
 		}catch(Exception e) {
 			e.printStackTrace();
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
@@ -90,8 +90,8 @@ public class DipendenteController {
 		return dipendenteService.findByEtaMatch(eta);
 	}
 	
-	@DeleteMapping("/delete")
-	public String deleteById (@RequestParam String id) {
+	@DeleteMapping("/delete/{id}")
+	public String deleteById (@PathVariable(value="id")String id) {
 		dipendenteService.deleteById(id);
 		return "Eliminazione avvenuta con successo";
 	}

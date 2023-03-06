@@ -49,7 +49,7 @@ public class RuoloController {
 	 }
 
 	 @DeleteMapping("/delete")
-	 public String deleteById(String id) {
+	 public String deleteById(@RequestParam String id) {
 		 ruoloService.deleteById(id);
 		 return "Eliminazione avvenuta con successo";
 	 }

@@ -51,7 +51,7 @@ public class ProgettoController {
 	}
 	
 	@DeleteMapping("/delete")
-	public String deleteById(String id) {
+	public String deleteById( @RequestParam String id) {
 		progettoService.deleteById(id);
 		return "Eliminazione avvenuta con successo";
 	}

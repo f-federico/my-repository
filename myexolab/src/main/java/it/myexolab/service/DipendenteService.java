@@ -33,8 +33,8 @@ public class DipendenteService {
 	@Autowired 
 	private MongoTemplate mongoTemplate; 
 
-	public List<Dipendente> create (List<Dipendente> listaDipendenti){
-		return dipendenteRepository.saveAll(listaDipendenti);
+	public Dipendente create (Dipendente dipendente){
+		return dipendenteRepository.save(dipendente);
 		
 	}
 	
